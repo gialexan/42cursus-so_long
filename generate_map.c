@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gen_map.c                                          :+:      :+:    :+:   */
+/*   generate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 17:20:32 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/12 14:17:17 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:06:22 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**gen_map(char *path_file)
+char	**generate_map(char *path_file)
 {
 	int		fd;
 	char	*aux;
@@ -27,7 +27,7 @@ char	**gen_map(char *path_file)
 	{
 		tmp = ft_get_next_line(fd);
 		if (!tmp)
-			break;
+			break ;
 		aux = ft_strjoin(aux, tmp);
 		ft_free_ptr((void *)&tmp);
 	}

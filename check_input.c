@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   val_map.c                                          :+:      :+:    :+:   */
+/*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 21:18:40 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/14 00:47:35 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/15 12:47:02 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	val_map(int argc, char **argv)
+static	void	die(char *errmsg, int errnum)
 {
-	int len;
-	
+	ft_putstr_fd(errmsg, errnum);
+	exit(1);
+}
+
+void	check_input(int argc, char **argv)
+{
+	int	len_argv;
+
 	if (argc != 2)
-	{
-		ft_printf("Número de argumentos inválidos!\n");
-		exit(1);
-	}
-	len = ft_strlen(argv[1]);
-	if ((len < 5) || (argv[1] == 0))
-	{
-		ft_printf("Mapa invalido! (<NomeMapa>.ber)\n");
-		exit(1);
-	}
-	if ((ft_strcmp(".ber", (argv[1] + len - 4)) != 0))
-	{
-		ft_printf("Mapa invalido! (<NomeMapa>.ber)\n");
-		exit(1);
-	}
+		die("Número de argumentos inválidos!\n", 0);
+	len_argv = ft_strlen(argv[1]);
+	if ((len_argv < 5) || (argv[1] == 0))
+		die("Mapa invalido! (<NomeMapa>.ber)\n", 0);
+	if ((ft_strcmp(".ber", (argv[1] + len_argv - 4)) != 0))
+		die("Mapa invalido! (<NomeMapa>.ber)\n", 0);
 }

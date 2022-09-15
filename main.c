@@ -6,73 +6,52 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:39:20 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/14 00:51:44 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/15 16:33:43 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 int main(int argc, char **argv)
 {
 	t_game game;
-	int x;
-	int y;
-	
+
+	int i;
+
 	/* válida mapa */
-	val_map(argc, argv);
+	check_input(argc, argv);
 	/* gera mapa */
-	game.map = gen_map(argv[1]);
-	if(!game.map)
-		printf("Arquivo de mapa inválido!");
+	game.map = generate_map(argv[1]);
+	if (!game.map)
+		return (ft_printf("Arquivo de mapa inválido!\n"));
 	/* checar mapa */
-	//check_map
-	//validar se existe player, se tem paredes nas bordas, coletáveis, saida 
-	
-	/* tamanho tela */
-	game.window = win_size(game.map);
-
-	/*  */
+	check_game(&game, -1, -1, ft_strlen(game.map[0]));
+	init_game(&game)
+	exit(1);
 
 	
+	/* iniciar o jogo */
+	// root.mlx_ptr = mlx_init(); // iniciando mlx
+	// root.window.win_ptr = mlx_new_window(root.mlx_ptr,root.window.width ,root.window.height, "so_long"); // iniciando janela
 	
+	// root.floor.img_ptr = mlx_xpm_file_to_image(root.mlx_ptr, "img/floor.xpm", &root.floor.x , &root.floor.y); // salvando chão
+	// root.wall.img_ptr = mlx_xpm_file_to_image(root.mlx_ptr, "img/wall.xpm", &root.wall.x , &root.wall.y); // salvando parede
 	
-	// conferir o mapa
 	// x = 0;
-	// while(game.map[x])
+	// while (root.map[x])
 	// {
 	// 	y = 0;
-	// 	while (game.map[x][y] != '\0')
+	// 	while (root.map[x][y])
 	// 	{
-	// 		printf("%c", game.map[x][y]);
+	// 		if (root.map[x][y] == '1') {
+	// 			mlx_put_image_to_window(root.mlx_ptr, root.window.win_ptr, root.wall.img_ptr, (50 * x),(50 * y));
+	// 		}
+	// 		if (root.map[x][y] == '0') {
+	// 			mlx_put_image_to_window(root.mlx_ptr, root.window.win_ptr, root.floor.img_ptr, (50 * x), (50 * y));
+	// 		}
 	// 		y++;
 	// 	}
 	// 	x++;
-	// 	printf("\n");
 	// }
-	
-	/* iniciar o jogo */
-	game.mlx_ptr = mlx_init(); // iniciando mlx
-	game.window.win_ptr = mlx_new_window(game.mlx_ptr,game.window.width ,game.window.height, "so_long"); // iniciando janela
-	
-	game.floor.img_ptr = mlx_xpm_file_to_image(game.mlx_ptr, "img/floor.xpm", &game.floor.x , &game.floor.y); // salvando chão
-	game.wall.img_ptr = mlx_xpm_file_to_image(game.mlx_ptr, "img/wall.xpm", &game.wall.x , &game.wall.y); // salvando parede
-	
-	x = 0;
-	while (game.map[x])
-	{
-		y = 0;
-		while (game.map[x][y])
-		{
-			if (game.map[x][y] == '1') {
-				mlx_put_image_to_window(game.mlx_ptr, game.window.win_ptr, game.wall.img_ptr, (50 * x),(50 * y));
-			}
-			if (game.map[x][y] == '0') {
-				mlx_put_image_to_window(game.mlx_ptr, game.window.win_ptr, game.floor.img_ptr, (50 * x), (50 * y));
-			}
-			y++;
-		}
-		x++;
-	}
-	mlx_loop(game.mlx_ptr);
+	// mlx_loop(root.mlx_ptr);
 }
