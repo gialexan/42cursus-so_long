@@ -6,29 +6,43 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:39:20 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/15 16:33:43 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/16 13:58:29 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+static	void	die(char *errmsg, int errnum)
+{
+	ft_putstr_fd(errmsg, errnum);
+	exit(1);
+}
+
 int main(int argc, char **argv)
 {
-	t_game game;
+	char	*str;
+	t_game	game;
 
-	int i;
-
-	/* válida mapa */
-	check_input(argc, argv);
+	/* válida entradas */
+	if (argc != 2)
+		die("Número de argumentos inválidos!\n", 0);
+	if (ft_strlen(argv[1]) < 5)
+		die("Mapa invalido! (<NomeMapa>.ber)\n", 0);
+	str = ft_strrchr(argv[1], '.');
+	if (ft_strncmp(str, ".ber", 5))
+		die("Mapa invalido! (<NomeMapa>.ber)\n", 0);
+	
 	/* gera mapa */
 	game.map = generate_map(argv[1]);
 	if (!game.map)
-		return (ft_printf("Arquivo de mapa inválido!\n"));
+		die("Erro, mapa inválido!\n", 0);
+
 	/* checar mapa */
 	check_game(&game, -1, -1, ft_strlen(game.map[0]));
-	init_game(&game)
-	exit(1);
-
+	
+	/* iniciar jogo */
+	init_game(&game);
+	exit (1);
 	
 	/* iniciar o jogo */
 	// root.mlx_ptr = mlx_init(); // iniciando mlx

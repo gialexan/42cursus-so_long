@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 17:20:32 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/14 17:06:22 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/15 17:23:27 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ char	**generate_map(char *path_file)
 		if (!tmp)
 			break ;
 		aux = ft_strjoin(aux, tmp);
-		ft_free_ptr((void *)&tmp);
+		ft_free((void *)&tmp);
 	}
 	map = ft_split(aux, '\n');
-	ft_free_ptr((void *)&aux);
+	ft_free((void *)&aux);
+	close (fd);
 	return (map);
 }
