@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:40:22 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 02:06:34 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/18 05:06:33 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_game
 {
 	void		*mlx_ptr; // ponteiro mlx init
 	char		**map; // mapa
-	int			move;
+	int			moves;
 	int			count_player; // jogador
 	int			count_collectible; // coletáveis
 	int			count_exit; // saída

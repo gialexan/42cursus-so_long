@@ -6,17 +6,17 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:31:29 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/17 16:08:53 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/18 05:06:04 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	wall(char sideA, char sideB, char sideC)
+static int	wall(char side_a, char side_b, char side_c)
 {
-	return ((sideA != '1')
-		|| (sideB != '1')
-		|| (sideC != '1'));
+	return ((side_a != '1')
+		|| (side_b != '1')
+		|| (side_c != '1'));
 }
 
 static int	utilities(t_game **game)
@@ -28,8 +28,11 @@ static int	utilities(t_game **game)
 
 static void	control(t_game **game)
 {
-	(*game)->count_player = 0;
+	(*game)->move = 0;
+	(*game)->player.x = 0;
+	(*game)->player.y = 0;
 	(*game)->count_exit = 0;
+	(*game)->count_player = 0;
 	(*game)->count_collectible = 0;
 }
 
