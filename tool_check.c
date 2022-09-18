@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:31:29 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 05:06:04 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/18 08:28:26 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	utilities(t_game **game)
 
 static void	control(t_game **game)
 {
-	(*game)->move = 0;
+	(*game)->moves = 0;
 	(*game)->player.x = 0;
 	(*game)->player.y = 0;
 	(*game)->count_exit = 0;
@@ -39,11 +39,11 @@ static void	control(t_game **game)
 static int	character(t_game **game, char character)
 {
 	if (character == 'P')
-		(*game)->count_player += 1;
+		(*game)->count_player++;
 	else if (character == 'C')
-		(*game)->count_collectible += 1;
+		(*game)->count_collectible++;
 	else if (character == 'E')
-		(*game)->count_exit += 1;
+		(*game)->count_exit++;
 	else if ((character != '0') && (character != '1'))
 		return (FALSE);
 	return (TRUE);

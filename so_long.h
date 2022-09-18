@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:40:22 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 05:06:33 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/18 08:40:14 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,22 @@
 # define SPRITE		32
 # define FALSE		1
 # define TRUE		0
-# define INCREMENT	1
-# define DECREMENT -1
 //img
-# define PATH_FLOOR "img/black.xpm"
-# define PATH_WALL "img/wall.xpm"
-# define PATH_PLAYER "img/pac_closed.xpm"
-# define PATH_EXIT "img/portal.xpm"
-# define PATH_COLL "img/pacdot_food.xpm"
+# define PATH_FLOOR 	"img/black.xpm"
+# define PATH_WALL 		"img/wall.xpm"
+# define PATH_PLAYER	"img/pac_closed.xpm"
+# define PATH_EXIT 		"img/portal.xpm"
+# define PATH_COLL 		"img/pacdot_food.xpm"
 //key
-# define KEY_W	0x77
-# define KEY_S	0x73
-# define KEY_D	0x64
-# define KEY_A	0x61
-# define KEY_UP		0xff52
-# define KEY_ESC	0xff1b
-# define KEY_LEFT	0xff51
-# define KEY_DOWN	0xff54
-# define KEY_RIGHT	0xff53
+# define KEY_ESC		0xff1b
+# define KEY_LEFT		0xff51
+# define KEY_UP			0xff52  
+# define KEY_RIGHT		0xff53
+# define KEY_DOWN		0xff54
+# define KEY_A			0x0061
+# define KEY_S			0x0073
+# define KEY_D			0x0064
+# define KEY_W			0x0077
 
 typedef struct s_image
 {
@@ -76,9 +74,15 @@ typedef struct s_game
 
 //mapa
 char	**generate_map(char	*path_file);
+int		render_map(t_game **game);
+void	swap_player(t_game **game, t_image **ppl, int move, char coord);
 
 //jogo e utilidades
 void	init_game(t_game *game);
-void	load_sprite(t_game **game);
+int		move(int key, t_game **game);
 int		check_game(t_game *game, int x, int y, int line_size);
+
+//imagem
+void	load_sprite(t_game **game);
+void	draw_image(t_game **game, t_image *image, int x, int y);
 #endif
