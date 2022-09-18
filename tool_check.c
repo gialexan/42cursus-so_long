@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_game.c                                       :+:      :+:    :+:   */
+/*   tool_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:31:29 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/16 13:08:32 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/17 16:08:53 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 static int	wall(char sideA, char sideB, char sideC)
 {
-	return ((sideA != '1') || (sideB != '1') || (sideC != '1'));
+	return ((sideA != '1')
+		|| (sideB != '1')
+		|| (sideC != '1'));
 }
 
 static int	utilities(t_game **game)
 {
-	return (((*game)->count_player != 1) || ((*game)->count_exit != 1)
+	return (((*game)->count_exit < 1)
+		|| ((*game)->count_player != 1)
 		|| ((*game)->count_collectible < 1));
 }
 
@@ -65,8 +68,8 @@ int	check_game(t_game *game, int x, int y, int line_size)
 		}
 		ymax = y - 1;
 	}
-	// if (utilities(&game))
-	// 	return (FALSE);
+	if (utilities(&game))
+		return (FALSE);
 	game->window.height = x * SPRITE;
 	game->window.width = y * SPRITE;
 	return (TRUE);
