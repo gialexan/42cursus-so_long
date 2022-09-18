@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 17:20:32 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 08:37:47 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/18 08:58:11 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	render_map(t_game **game)
 	int y;
 
 	x = 0;
-	while ((*game)->map[++x])
+	while ((*game)->map[x])
 	{
 		y = 0;
-		while ((*game)->map[x][++y])
+		while ((*game)->map[x][y])
 		{
 			if ((*game)->map[x][y] == '1')
 				draw_image(&*game, &(*game)->wall, x, y);

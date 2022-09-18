@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:16:03 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 08:18:18 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/18 09:19:37 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	draw_image(t_game **game, t_image *image, int x, int y)
 {
-	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->window.win_ptr, 
-		image->img_ptr, SPRITE * y, SPRITE * x);
 	image->x = x;
 	image->y = y;
+	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->window.win_ptr, 
+		image->img_ptr, SPRITE * y, SPRITE * x);
 }
 
 static void	load_image(t_game **game, t_image *image, char *path)
