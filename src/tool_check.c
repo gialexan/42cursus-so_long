@@ -51,7 +51,7 @@ static int	character(t_game **game, char character)
 	return (0);
 }
 
-int	check_game(t_game *game, int x, int y, int line_size)
+int	check_game(t_game *game, int x, int y, size_t line_size)
 {
 	int	xmax;
 	int	ymax;

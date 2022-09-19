@@ -19,7 +19,7 @@ static int	count_digits(unsigned int n)
 	return (count_digits(n / 10) + 1);
 }
 
-static int	isnegative(unsigned int n)
+static int	isnegative(int n)
 {
 	return (n < 0);
 }

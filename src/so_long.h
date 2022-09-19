@@ -13,20 +13,22 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./minilibx/mlx.h"
-# include "./libft/libft.h"
+# include "../minilibx/mlx.h"
+# include "../libft/libft.h"
+//# include <mlx.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <fcntl.h>
+
 # define SPRITE		32
-# define PATH_FLOOR 	"img/space.xpm"
-# define PATH_WALL 		"img/wall.xpm"
-# define PATH_EXIT 		"img/exit.xpm"
-# define PATH_COLL 		"img/coin_0.xpm"
-# define PATH_PPL_DOWN	"img/tux_down.xpm"
-# define PATH_PPL_RIGHT	"img/tux_right.xpm"
-# define PATH_PPL_LEFT	"img/tux_left.xpm"
-# define PATH_PPL_UP	"img/tux_up.xpm"
+# define PATH_FLOOR 	"../img/space.xpm"
+# define PATH_WALL 		"../img/wall.xpm"
+# define PATH_EXIT 		"../img/exit.xpm"
+# define PATH_COLL 		"../img/coin_0.xpm"
+# define PATH_PPL_DOWN	"../img/tux_down.xpm"
+# define PATH_PPL_RIGHT	"../img/tux_right.xpm"
+# define PATH_PPL_LEFT	"../img/tux_left.xpm"
+# define PATH_PPL_UP	"../img/tux_up.xpm"
+
 # define KEY_ESC		0xff1b
 # define KEY_LEFT		0xff51
 # define KEY_UP			0xff52  
@@ -74,7 +76,7 @@ int		render_map(t_game **game);
 void	swap_player(t_game **game, t_image **ppl, int move, char coord);
 void	init_game(t_game *game);
 int		move(int key, t_game **game);
-int		check_game(t_game *game, int x, int y, int line_size);
+int		check_game(t_game *game, int x, int y, size_t line_size);
 void	load_sprite(t_game **game);
 void	draw_image(t_game **game, t_image *image, int x, int y);
 void	load_mov_player(t_game **game, char *path);
