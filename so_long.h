@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:40:22 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 08:40:14 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/19 00:01:09 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@
 # include <fcntl.h>
 //macro help
 # define SPRITE		32
-# define FALSE		1
-# define TRUE		0
 //img
-# define PATH_FLOOR 	"img/black.xpm"
+# define PATH_FLOOR 	"img/space.xpm"
 # define PATH_WALL 		"img/wall.xpm"
-# define PATH_PLAYER	"img/pac_closed.xpm"
-# define PATH_EXIT 		"img/portal.xpm"
-# define PATH_COLL 		"img/pacdot_food.xpm"
+# define PATH_EXIT 		"img/exit.xpm"
+# define PATH_COLL 		"img/coin_0.xpm"
+# define PATH_PPL_DOWN	"img/tux_down.xpm"
+# define PATH_PPL_RIGHT	"img/tux_right.xpm"
+# define PATH_PPL_LEFT	"img/tux_left.xpm"
+# define PATH_PPL_UP	"img/tux_up.xpm"
 //key
 # define KEY_ESC		0xff1b
 # define KEY_LEFT		0xff51
@@ -85,4 +86,9 @@ int		check_game(t_game *game, int x, int y, int line_size);
 //imagem
 void	load_sprite(t_game **game);
 void	draw_image(t_game **game, t_image *image, int x, int y);
+void	load_mov_player(t_game **game, char *path);
+
+//destroy
+int		exit_game(t_game **game);
+void	free_tab(char **tab);
 #endif

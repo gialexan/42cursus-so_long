@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 17:20:32 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 08:58:11 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/19 00:03:49 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,26 @@
 char	**generate_map(char *path_file)
 {
 	int		fd;
-	char	*aux;
+	char	*lines;
 	char	*tmp;
+	char	*line;
 	char	**map;
 
 	fd = open(path_file, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
-	aux = ft_strdup("");
-	while (1)
+	lines = ft_strdup("");
+	line = ft_get_next_line(fd);
+	while (line)
 	{
-		tmp = ft_get_next_line(fd);
-		if (!tmp)
-			break ;
-		aux = ft_strjoin(aux, tmp);
-		ft_free((void *)&tmp);
+		tmp = lines;
+		lines = ft_strjoin(tmp, line);
+		free(line);
+		free(tmp);
+		line = ft_get_next_line(fd);
 	}
-	map = ft_split(aux, '\n');
-	ft_free((void *)&aux);
+	map = ft_split(lines, '\n');
+	ft_free((void *)&lines);
 	close (fd);
 	return (map);
 }
@@ -88,4 +90,17 @@ void	swap_player(t_game **game, t_image **ppl, int move, char coord)
 	}
 	(*game)->map[(*ppl)->x][(*ppl)->y] = 'P';
 	(*game)->map[old_position_x][old_position_y] = '0';
+}
+
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
 }

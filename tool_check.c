@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:31:29 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 08:28:26 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/19 01:30:49 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	utilities(t_game **game)
 
 static void	control(t_game **game)
 {
+	(*game)->window.width = 0;
+	(*game)->window.height = 0;
 	(*game)->moves = 0;
 	(*game)->player.x = 0;
 	(*game)->player.y = 0;
@@ -45,14 +47,15 @@ static int	character(t_game **game, char character)
 	else if (character == 'E')
 		(*game)->count_exit++;
 	else if ((character != '0') && (character != '1'))
-		return (FALSE);
-	return (TRUE);
+		return (1);
+	return(0);
 }
 
 int	check_game(t_game *game, int x, int y, int line_size)
 {
 	int	xmax;
 	int	ymax;
+	int test;
 
 	ymax = 0;
 	xmax = 0;
@@ -64,16 +67,16 @@ int	check_game(t_game *game, int x, int y, int line_size)
 		y = -1;
 		while (game->map[x][++y])
 		{
-			if ((wall(game->map[x][0], game->map[x][ymax], game->map[xmax][y]))
-				|| (character(&game, game->map[x][y]))
-				|| (line_size != ft_strlen(game->map[x])))
-				return (FALSE);
+			if (wall(game->map[x][0], game->map[x][ymax], game->map[xmax][y])
+				|| character(&game, game->map[x][y])
+				|| line_size != ft_strlen(game->map[x]))
+				return (1);
 		}
 		ymax = y - 1;
 	}
 	if (utilities(&game))
-		return (FALSE);
+		return (3);
 	game->window.height = x * SPRITE;
 	game->window.width = y * SPRITE;
-	return (TRUE);
+	return (0);
 }

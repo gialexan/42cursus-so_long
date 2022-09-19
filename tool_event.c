@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 20:11:30 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 09:36:28 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/19 02:19:19 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ static	void	up(t_game **game, t_image *ppl)
 {	
 	if ((*game)->map[ppl->x - 1][ppl->y] == 'E' &&
 		(*game)->count_collectible == 0)
-		exit(0);
+		exit_game(&*game);
 	else if ((*game)->map[ppl->x - 1][ppl->y] != '1' &&
 		(*game)->map[ppl->x - 1][ppl->y] != 'E')
 	{
 		if ((*game)->map[ppl->x - 1][ppl->y] == 'C')
 			(*game)->count_collectible--;
+		load_mov_player(&*game, PATH_PPL_UP);
 		swap_player(&*game, &ppl, -1, 'x');
 		(*game)->moves++;
 	}
@@ -31,12 +32,13 @@ static	void	down(t_game **game, t_image *ppl)
 {
 	if ((*game)->map[ppl->x + 1][ppl->y] == 'E' &&
 		(*game)->count_collectible == 0)
-		exit(0);
+		exit_game(&*game);
 	else if ((*game)->map[ppl->x + 1][ppl->y] != '1' &&
 		(*game)->map[ppl->x + 1][ppl->y] != 'E')
 	{
 		if ((*game)->map[ppl->x + 1][ppl->y] == 'C')
 			(*game)->count_collectible--;
+		load_mov_player(&*game, PATH_PPL_DOWN);
 		swap_player(&*game, &ppl, 1, 'x');
 		(*game)->moves++;
 	}
@@ -45,13 +47,14 @@ static	void	down(t_game **game, t_image *ppl)
 static	void	left(t_game **game, t_image *ppl)
 {
 	if ((*game)->map[ppl->x][ppl->y - 1] == 'E' &&
-		(*game)->count_collectible == 0)
-		exit(0);
+			(*game)->count_collectible == 0)
+		exit_game(&*game);
 	else if ((*game)->map[ppl->x][ppl->y - 1] != '1' &&
-		(*game)->map[ppl->x][ppl->y] != 'E')
+		(*game)->map[ppl->x][ppl->y - 1] != 'E')
 	{
 		if ((*game)->map[ppl->x][ppl->y - 1] == 'C')
 			(*game)->count_collectible--;
+		load_mov_player(&*game, PATH_PPL_LEFT);
 		swap_player(&*game, &ppl, -1, 'y');
 		(*game)->moves++;
 	}
@@ -61,12 +64,13 @@ static	void	right(t_game **game, t_image *ppl)
 {
 	if ((*game)->map[ppl->x][ppl->y + 1] == 'E' &&
 		(*game)->count_collectible == 0)
-		exit(0);
-	if ((*game)->map[ppl->x][ppl->y + 1] != '1' &&
-		(*game)->map[ppl->x][ppl->y] != 'E')
+		exit_game(&*game);
+	else if ((*game)->map[ppl->x][ppl->y + 1] != '1' &&
+		(*game)->map[ppl->x][ppl->y + 1] != 'E')
 	{
 		if ((*game)->map[ppl->x][ppl->y + 1] == 'C')
 			(*game)->count_collectible--;
+		load_mov_player(&*game, PATH_PPL_RIGHT);
 		swap_player(&*game, &ppl, 1, 'y');
 		(*game)->moves++;
 	}
@@ -74,7 +78,9 @@ static	void	right(t_game **game, t_image *ppl)
 
 int move(int key, t_game **game)
 {
-	if (key == KEY_S || key == KEY_DOWN)
+	if (key == KEY_ESC)
+		exit_game(&*game);
+	else if (key == KEY_S || key == KEY_DOWN)
 		down(&*game, &(*game)->player);
 	else if (key == KEY_W || key == KEY_UP)
 		up(&*game, &(*game)->player);

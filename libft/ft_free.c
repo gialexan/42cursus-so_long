@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 17:24:21 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/15 16:57:53 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/18 22:51:53 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_free(void **ptr)
 {
-	if (*ptr)
-	{
-		free (*ptr);
-		*ptr = NULL;
-	}
+	free (*ptr);
+	*ptr = NULL;
 }

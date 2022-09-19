@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:39:20 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 02:28:04 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/19 01:34:50 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,15 @@ static	void	die(char *errmsg, int errnum)
 	exit(1);
 }
 
+static int	num(int n)
+{
+	return(n > 10);
+}
 int main(int argc, char **argv)
 {
 	char	*str;
 	t_game	game;
+	int x;
 
 	/* válida entradas ok*/
 	if (argc != 2)
@@ -31,16 +36,19 @@ int main(int argc, char **argv)
 	str = ft_strrchr(argv[1], '.');
 	if (ft_strncmp(str, ".ber", 5))
 		die("Mapa invalido! (<NomeMapa>.ber)\n", 0);
+	x = num(9);
+	
 
 	/* gera mapa ok */
 	game.map = generate_map(argv[1]);
 	if (!game.map)
 		die("Erro, arquivo de mapa inválido!\n", 0);
-
-	/* checar mapa ok */
-	if (check_game(&game, -1, -1, ft_strlen(game.map[0])))
-		die("Erro, mapa inválido!\n", 0);
-	
+	// /* checar mapa ok */
+	if(check_game(&game, -1, -1, ft_strlen(game.map[0])))
+	{
+		free_tab(game.map);
+		exit (1);
+	}
 	/* iniciar jogo */
 	init_game(&game);
 }
