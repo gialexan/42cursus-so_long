@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-
 int	md_putchar(char str)
 {
 	write(1, &str, 1);

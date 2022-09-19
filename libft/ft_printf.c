@@ -12,7 +12,6 @@
 
 #include "libft.h"
 
-
 static	int	printf_format(const char *format, int i, va_list arg_ptr)
 {
 	if (format[i + 1] == '%')

@@ -48,14 +48,13 @@ static int	character(t_game **game, char character)
 		(*game)->count_exit++;
 	else if ((character != '0') && (character != '1'))
 		return (1);
-	return(0);
+	return (0);
 }
 
 int	check_game(t_game *game, int x, int y, int line_size)
 {
 	int	xmax;
 	int	ymax;
-	int test;
 
 	ymax = 0;
 	xmax = 0;
@@ -75,7 +74,7 @@ int	check_game(t_game *game, int x, int y, int line_size)
 		ymax = y - 1;
 	}
 	if (utilities(&game))
-		return (3);
+		return (1);
 	game->window.height = x * SPRITE;
 	game->window.width = y * SPRITE;
 	return (0);

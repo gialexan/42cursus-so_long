@@ -16,14 +16,14 @@ void	draw_image(t_game **game, t_image *image, int x, int y)
 {
 	image->x = x;
 	image->y = y;
-	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->window.win_ptr, 
+	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->window.win_ptr,
 		image->img_ptr, SPRITE * y, SPRITE * x);
 }
 
 static void	load_image(t_game **game, t_image *image, char *path)
 {
 	image->img_ptr = mlx_xpm_file_to_image((**game).mlx_ptr,
-		path, &image->width, &image->height);
+			path, &image->width, &image->height);
 }
 
 void	load_mov_player(t_game **game, char *path)

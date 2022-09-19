@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 17:20:32 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/19 00:03:49 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:01:36 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char	**generate_map(char *path_file)
 
 int	render_map(t_game **game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	while ((*game)->map[x])
@@ -70,7 +70,7 @@ int	render_map(t_game **game)
 void	swap_player(t_game **game, t_image **ppl, int move, char coord)
 {
 	int	old_position_x;
-	int old_position_y;
+	int	old_position_y;
 
 	old_position_x = (*ppl)->x;
 	old_position_y = (*ppl)->y;
@@ -79,7 +79,7 @@ void	swap_player(t_game **game, t_image **ppl, int move, char coord)
 		if (move < 0)
 			(*ppl)->x -= 1;
 		else if (move > 0)
-			(*ppl)->x += 1;			
+			(*ppl)->x += 1;
 	}
 	else if (coord == 'y')
 	{
@@ -90,17 +90,4 @@ void	swap_player(t_game **game, t_image **ppl, int move, char coord)
 	}
 	(*game)->map[(*ppl)->x][(*ppl)->y] = 'P';
 	(*game)->map[old_position_x][old_position_y] = '0';
-}
-
-void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
 }

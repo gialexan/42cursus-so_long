@@ -76,7 +76,7 @@ static	void	right(t_game **game, t_image *ppl)
 	}
 }
 
-int move(int key, t_game **game)
+int	move(int key, t_game **game)
 {
 	if (key == KEY_ESC)
 		exit_game(&*game);
