@@ -6,49 +6,56 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 02:09:45 by gialexan          #+#    #+#              #
-#    Updated: 2022/09/20 02:10:35 by gialexan         ###   ########.fr        #
+#    Updated: 2022/09/21 21:04:05 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME = 				so_long
 
-SRC_FILE = so_long.c tool_check.c tool_destroy.c tool_event.c tool_map.c tool_sprite.c
+MAP = 				./map/test.ber
 
-SRC_DIR = src
+SRC_FILE = 			so_long.c tool_check.c tool_destroy.c tool_event.c tool_map.c tool_sprite.c
 
-LIBFT_DIR = libft
+SRC_DIR = 			src
 
-MINILIBX_DIR = minilibx
+LIBFT_DIR = 		libft
 
-SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILE))
+MINILIBX_DIR = 		minilibx
 
-OBJ = $(SRC:.c=.o)
+SRC = 				$(addprefix $(SRC_DIR)/, $(SRC_FILE))
 
-LIBFT = ./libft/libft.a
+OBJ = 				$(SRC:.c=.o)
 
-MINILIBX = ./minilibx/libmlx.a
+LIBFT = 			./libft/libft.a
 
-RM = rm -f
+MINILIBX = 			./minilibx/libmlx.a
 
-CC = clang
+RM = 				rm -f
 
-CFLAGS = -Wall -Wextra -Werror -g
+CC = 				clang
 
-MINILIBX_FLAGS = -lX11 -lXext -lmlx
+CFLAGS = 			-Wall -Wextra -Werror -g
 
-%.o:	%.c
-		$(CC) $(CFLAGS) -c $< -o $@
+MINILIBX_FLAGS = 	-lX11 -lXext -lmlx
 
 all: $(NAME)
 
-$(NAME):	$(LIBFT) $(OBJ)
-			$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX_FLAGS)
+$(NAME):			$(LIBFT) $(MINILIBX) $(OBJ)
+					$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX) $(MINILIBX_FLAGS) -o $(NAME)
 
 $(LIBFT):
-			$(MAKE) -C $(LIBFT_DIR)
+					$(MAKE) -C $(LIBFT_DIR)
 
 $(MINILIBX):
-			$(MAKE) -C $(MINILIBX_DIR)
+					$(MAKE) -C $(MINILIBX_DIR)
+
+run:				$(NAME)
+					make re
+					./so_long $(MAP)
+
+
+valgrind:			$(NAME)
+					valgrind ./so_long $(MAP)
 
 clean:
 					$(MAKE) clean -C $(LIBFT_DIR)

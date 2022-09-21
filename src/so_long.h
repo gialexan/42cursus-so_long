@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:19:16 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/21 19:09:44 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:11:26 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
-# include <stdio.h>
 # include <fcntl.h>
 
 //Sprites
 # define SPRITE		32
-# define PATH_FLOOR 	"../img/space.xpm"
-# define PATH_WALL 		"../img/wall.xpm"
-# define PATH_EXIT 		"../img/exit.xpm"
-# define PATH_COLL 		"../img/coin_0.xpm"
-# define PATH_PPL_DOWN	"../img/tux_down.xpm"
-# define PATH_PPL_RIGHT	"../img/tux_right.xpm"
-# define PATH_PPL_LEFT	"../img/tux_left.xpm"
-# define PATH_PPL_UP	"../img/tux_up.xpm"
+# define PATH_FLOOR 	"./img/space.xpm"
+# define PATH_WALL 		"./img/wall.xpm"
+# define PATH_EXIT 		"./img/exit.xpm"
+# define PATH_COLL 		"./img/coin_0.xpm"
+# define PATH_PPL_DOWN	"./img/tux_down.xpm"
+# define PATH_PPL_RIGHT	"./img/tux_right.xpm"
+# define PATH_PPL_LEFT	"./img/tux_left.xpm"
+# define PATH_PPL_UP	"./img/tux_up.xpm"
 
 //Bottons
 # define KEY_ESC		0xff1b

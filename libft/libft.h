@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 17:39:28 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/20 21:35:46 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:14:40 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,5 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //my function
 void	ft_free(void **ptr);
-char    **ft_array_dup(char **array);
-
+char	**ft_array_dup(char **array);
 #endif
