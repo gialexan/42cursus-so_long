@@ -6,12 +6,11 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 15:39:20 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/21 19:17:59 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/22 00:06:26 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 void	init_game(t_game *game)
 {
