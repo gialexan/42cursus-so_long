@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/09/19 20:17:18 by gialexan          #+#    #+#              #
-#    Updated: 2022/09/19 20:17:19 by gialexan         ###   ########.fr        #
+#    Created: 2022/09/20 02:09:45 by gialexan          #+#    #+#              #
+#    Updated: 2022/09/20 02:10:35 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ NAME = so_long
 
 SRC_FILE = so_long.c tool_check.c tool_destroy.c tool_event.c tool_map.c tool_sprite.c
 
-SRC_DIR = src/
+SRC_DIR = src
 
-LIBFT_DIR = libft/
+LIBFT_DIR = libft
 
-MINILIBX_DIR = minilibx/
+MINILIBX_DIR = minilibx
 
-SRC = $(addprefix $(SRC_DIR), $(SRC_FILE))
+SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILE))
 
 OBJ = $(SRC:.c=.o)
 

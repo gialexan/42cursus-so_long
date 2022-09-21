@@ -6,11 +6,17 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:16:03 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/18 22:13:40 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:14:03 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	load_image(t_game **game, t_image *image, char *path)
+{
+	image->img_ptr = mlx_xpm_file_to_image((**game).mlx_ptr,
+			path, &image->width, &image->height);
+}
 
 void	draw_image(t_game **game, t_image *image, int x, int y)
 {
@@ -18,12 +24,6 @@ void	draw_image(t_game **game, t_image *image, int x, int y)
 	image->y = y;
 	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->window.win_ptr,
 		image->img_ptr, (SPRITE * y), (SPRITE * x));
-}
-
-static void	load_image(t_game **game, t_image *image, char *path)
-{
-	image->img_ptr = mlx_xpm_file_to_image((**game).mlx_ptr,
-			path, &image->width, &image->height);
 }
 
 void	load_mov_player(t_game **game, char *path)

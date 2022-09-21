@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:19:16 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/19 19:19:28 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:32:59 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
-//# include <mlx.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <fcntl.h>
 
+//Sprites
 # define SPRITE		32
 # define PATH_FLOOR 	"../img/space.xpm"
 # define PATH_WALL 		"../img/wall.xpm"
@@ -29,6 +30,7 @@
 # define PATH_PPL_LEFT	"../img/tux_left.xpm"
 # define PATH_PPL_UP	"../img/tux_up.xpm"
 
+//Bottons
 # define KEY_ESC		0xff1b
 # define KEY_LEFT		0xff51
 # define KEY_UP			0xff52  
@@ -57,30 +59,49 @@ typedef struct s_window
 
 typedef struct s_game
 {
-	void		*mlx_ptr;
 	char		**map;
 	int			moves;
-	int			count_player;
-	int			count_collectible;
+	void		*mlx_ptr;
+	int			val_exit;
+	char		**tmp_map;
 	int			count_exit;
+	int			count_player;
+	int			init_ppl_x;
+	int			init_ppl_y;
+	int			val_collectible;
+	int			count_collectible;
 	t_image		floor;
 	t_image		wall;
 	t_image		exit;
 	t_image		player;
-	t_image		collectible;
 	t_window	window;
+	t_image		collectible;
 }	t_game;
 
-char	**generate_map(char	*path_file);
-int		render_map(t_game **game);
-void	swap_player(t_game **game, t_image **ppl, int move, char coord);
+//tool_map
 void	init_game(t_game *game);
+int		render_map(t_game **game);
+char	**generate_map(char	*path_file);
+
+//tool_event
 int		move(int key, t_game **game);
 int		check_game(t_game *game, int x, int y, size_t line_size);
+void	swap_player(t_game **game, t_image **ppl, int move, char coord);
+
+//tool_sprite
 void	load_sprite(t_game **game);
-void	draw_image(t_game **game, t_image *image, int x, int y);
 void	load_mov_player(t_game **game, char *path);
-int		exit_game(t_game **game);
-void	free_map(char **tab);
+void	load_image(t_game **game, t_image *image, char *path);
+void	draw_image(t_game **game, t_image *image, int x, int y);
+
+//tool_destroy
 int		die(char *errmsg);
+void	free_map(char **tab);
+int		exit_game(t_game **game);
+
+//tool_check
+int		utilities(t_game *game);
+int		wall(char side_a, char side_b, char side_c);
+void 	flood_fill(t_game *game, char **map, int x, int y);
+int		character(t_game *game, char character, int x, int y);
 #endif
