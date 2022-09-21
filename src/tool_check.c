@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 15:31:29 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/21 15:33:09 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:08:03 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,15 @@ int	character(t_game *game, char character, int x, int y)
 	return (0);
 }
 
-void flood_fill(t_game *game, char **map, int x, int y)
+void	flood_fill(t_game *game, char **map, int x, int y)
 {
-	if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'E')
+	if (map[x][y] == '0' || map[x][y] == 'P' || map[x][y] == 'E'
+		|| map[x][y] == 'C')
 	{
-		if (map[x][y] == 'E')
-			game->val_exit++;
 		if (map[x][y] == 'C')
 			game->val_collectible++;
+		if (map[x][y] == 'E')
+			game->val_exit++;
 		map[x][y] = '5';
 		flood_fill(game, map, x, y + 1);
 		flood_fill(game, map, x, y - 1);
@@ -61,4 +62,3 @@ void flood_fill(t_game *game, char **map, int x, int y)
 	}
 	return ;
 }
-

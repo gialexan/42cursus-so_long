@@ -6,37 +6,37 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:16:03 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/20 21:14:03 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:39:55 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	load_image(t_game **game, t_image *image, char *path)
+void	load_image(t_game *game, t_image *image, char *path)
 {
-	image->img_ptr = mlx_xpm_file_to_image((**game).mlx_ptr,
+	image->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr,
 			path, &image->width, &image->height);
 }
 
-void	draw_image(t_game **game, t_image *image, int x, int y)
+void	draw_image(t_game *game, t_image *image, int x, int y)
 {
 	image->x = x;
 	image->y = y;
-	mlx_put_image_to_window((*game)->mlx_ptr, (*game)->window.win_ptr,
+	mlx_put_image_to_window(game->mlx_ptr, game->window.win_ptr,
 		image->img_ptr, (SPRITE * y), (SPRITE * x));
 }
 
-void	load_mov_player(t_game **game, char *path)
+void	load_mov_player(t_game *game, char *path)
 {
-	mlx_destroy_image((*game)->mlx_ptr, (*game)->player.img_ptr);
-	load_image(&*game, &(*game)->player, path);
+	mlx_destroy_image(game->mlx_ptr, game->player.img_ptr);
+	load_image(game, &game->player, path);
 }
 
-void	load_sprite(t_game **game)
+void	load_sprite(t_game *game)
 {
-	load_image(&*game, &(*game)->wall, PATH_WALL);
-	load_image(&*game, &(*game)->exit, PATH_EXIT);
-	load_image(&*game, &(*game)->floor, PATH_FLOOR);
-	load_image(&*game, &(*game)->player, PATH_PPL_RIGHT);
-	load_image(&*game, &(*game)->collectible, PATH_COLL);
+	load_image(game, &game->wall, PATH_WALL);
+	load_image(game, &game->exit, PATH_EXIT);
+	load_image(game, &game->floor, PATH_FLOOR);
+	load_image(game, &game->player, PATH_PPL_RIGHT);
+	load_image(game, &game->collectible, PATH_COLL);
 }

@@ -6,13 +6,14 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:19:16 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/21 15:32:59 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/09/21 19:09:44 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+//Includes
 # include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
@@ -65,9 +66,9 @@ typedef struct s_game
 	int			val_exit;
 	char		**tmp_map;
 	int			count_exit;
-	int			count_player;
 	int			init_ppl_x;
 	int			init_ppl_y;
+	int			count_player;
 	int			val_collectible;
 	int			count_collectible;
 	t_image		floor;
@@ -80,28 +81,28 @@ typedef struct s_game
 
 //tool_map
 void	init_game(t_game *game);
-int		render_map(t_game **game);
+int		render_map(t_game *game);
 char	**generate_map(char	*path_file);
 
 //tool_event
-int		move(int key, t_game **game);
+int		move(int key, t_game *game);
 int		check_game(t_game *game, int x, int y, size_t line_size);
-void	swap_player(t_game **game, t_image **ppl, int move, char coord);
+void	swap_player(t_game *game, t_image *ppl, int move, char coord);
 
 //tool_sprite
-void	load_sprite(t_game **game);
-void	load_mov_player(t_game **game, char *path);
-void	load_image(t_game **game, t_image *image, char *path);
-void	draw_image(t_game **game, t_image *image, int x, int y);
+void	load_sprite(t_game *game);
+void	load_mov_player(t_game *game, char *path);
+void	load_image(t_game *game, t_image *image, char *path);
+void	draw_image(t_game *game, t_image *image, int x, int y);
 
 //tool_destroy
-int		die(char *errmsg);
+int		die(t_game *game, char *errmsg, int errnum);
 void	free_map(char **tab);
-int		exit_game(t_game **game);
+int		exit_game(t_game *game);
 
 //tool_check
 int		utilities(t_game *game);
 int		wall(char side_a, char side_b, char side_c);
-void 	flood_fill(t_game *game, char **map, int x, int y);
+void	flood_fill(t_game *game, char **map, int x, int y);
 int		character(t_game *game, char character, int x, int y);
 #endif
