@@ -6,7 +6,7 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 02:09:45 by gialexan          #+#    #+#              #
-#    Updated: 2022/09/22 00:07:43 by gialexan         ###   ########.fr        #
+#    Updated: 2022/09/22 00:30:18 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,6 @@ $(MINILIBX):
 run:				$(NAME)
 					make re
 					./so_long $(MAP)
-
 
 valgrind:			$(NAME)
 					valgrind ./so_long $(MAP)
