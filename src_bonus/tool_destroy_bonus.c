@@ -6,22 +6,25 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 19:58:51 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/24 23:10:40 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/10/01 00:30:38 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-int	die(t_game *game, char *errmsg, int errnum)
+int	die(t_game *game, char *errmsg, int errnum, char *ptr)
 {
+	ft_putendl_fd(errmsg, 0);
 	if (errnum == 1)
-	{
-		ft_putendl_fd(errmsg, 0);
 		return (1);
-	}
 	else if (errnum == 2)
 	{
 		free_map(game->map);
+		exit (1);
+	}
+	else if (errnum == 3)
+	{
+		ft_free((void *)&ptr);
 		exit (1);
 	}
 	return (1);

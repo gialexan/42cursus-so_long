@@ -6,7 +6,7 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 02:09:45 by gialexan          #+#    #+#              #
-#    Updated: 2022/09/24 23:36:46 by gialexan         ###   ########.fr        #
+#    Updated: 2022/10/01 00:33:06 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME =				so_long
 
 NAME_BONUS =		so_long_bonus
 
-MAP =				./map/test.ber
+MAP =				map/map.ber
+
+MAP_BONUS =         map/map_bonus.ber
 
 SRC_FILE = 			so_long.c tool_check.c tool_destroy.c tool_event.c tool_map.c tool_sprite.c
 
@@ -50,8 +52,10 @@ CFLAGS = 			-Wall -Wextra -Werror -g
 MINILIBX_FLAGS = 	-lX11 -lXext -lmlx
 
 all: $(NAME)
+		./so_long ./map/mandatory.ber
 
 bonus: $(NAME_BONUS)
+		./so_long_bonus ./map/bonus.ber
 
 $(NAME):			$(LIBFT) $(MINILIBX) $(OBJ)
 					$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX) $(MINILIBX_FLAGS) -o $(NAME)
@@ -68,9 +72,11 @@ $(MINILIBX):
 run:				$(NAME)
 					./so_long $(MAP)
 
-valgrind:			$(NAME)
+vm:					$(NAME)
 					valgrind ./so_long $(MAP)
 
+vb:					$(NAME_BONUS)
+					valgrind ./so_long_bonus $(MAP_BONUS)
 clean:
 					$(MAKE) clean -C $(LIBFT_DIR)
 					$(MAKE) clean -C $(MINILIBX_DIR)

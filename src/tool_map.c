@@ -6,13 +6,24 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 17:20:32 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/21 23:56:01 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/10/01 01:03:51 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**generate_map(char *path_file)
+static	void	consecutive_line_breaks(t_game *game, char *map_tmp, int i)
+{
+	if (map_tmp[0] == '\0')
+		die (game, "Error, map invalid!", 3, map_tmp);
+	while (map_tmp[++i])
+	{
+		if (map_tmp[i] == '\n' && map_tmp[i + 1] == '\n')
+			die (game, "Error, map invalid!", 3, map_tmp);
+	}
+}
+
+char	**generate_map(t_game *game, char *path_file)
 {
 	int		fd;
 	char	*tmp;
@@ -34,6 +45,7 @@ char	**generate_map(char *path_file)
 		ft_free((void *)&line);
 		ft_free((void *)&tmp);
 	}
+	consecutive_line_breaks(game, map_tmp, -1);
 	map = ft_split(map_tmp, '\n');
 	ft_free((void *)&map_tmp);
 	close (fd);

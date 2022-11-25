@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:19:16 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/24 23:53:19 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/10/01 00:31:14 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@
 
 //animation
 # define SPEED_ANIMATION 		2000
-# define SPEED_ANIMATION_ENEMY 	9000
+# define SPEED_ANIMATION_ENEMY 	8000
 # define UP_ENEMY				1
 # define DOWN_ENEMY				0
 
@@ -109,7 +109,7 @@ typedef struct s_game
 //tool_map
 void	init_game(t_game *game);
 int		render_map(t_game *game, int x, int y);
-char	**generate_map(char	*path_file);
+char	**generate_map(t_game *game, char *path_file);
 
 //tool_event
 int		move_ppl(int key, t_game *game);
@@ -123,7 +123,7 @@ void	load_image(t_game *game, t_image *image, char *path);
 void	draw_image(t_game *game, t_image *image, int x, int y);
 
 //tool_destroy
-int		die(t_game *game, char *errmsg, int errnum);
+int		die(t_game *game, char *errmsg, int errnum, char *ptr);
 void	free_map(char **tab);
 int		exit_game(t_game *game);
 

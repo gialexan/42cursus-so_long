@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:19:16 by gialexan          #+#    #+#             */
-/*   Updated: 2022/09/21 23:54:14 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/10/01 00:22:19 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 //Sprites
 # define SPRITE		32
-# define PATH_FLOOR 	"./img/space.xpm"
-# define PATH_WALL 		"./img/wall.xpm"
-# define PATH_EXIT 		"./img/exit.xpm"
-# define PATH_COLL 		"./img/coin_0.xpm"
-# define PATH_PPL_DOWN	"./img/tux_down.xpm"
-# define PATH_PPL_RIGHT	"./img/tux_right.xpm"
-# define PATH_PPL_LEFT	"./img/tux_left.xpm"
-# define PATH_PPL_UP	"./img/tux_up.xpm"
+# define PATH_FLOOR 	"./img/other/space.xpm"
+# define PATH_WALL 		"./img/other/wall.xpm"
+# define PATH_EXIT 		"./img/other/exit.xpm"
+# define PATH_COLL 		"./img/coin/coin_0.xpm"
+# define PATH_PPL_DOWN	"./img/player/tux_down.xpm"
+# define PATH_PPL_RIGHT	"./img/player/tux_right.xpm"
+# define PATH_PPL_LEFT	"./img/player/tux_left.xpm"
+# define PATH_PPL_UP	"./img/player/tux_up.xpm"
 
 //Bottons
 # define KEY_ESC		0xff1b
@@ -81,7 +82,7 @@ typedef struct s_game
 //tool_map
 void	init_game(t_game *game);
 int		render_map(t_game *game);
-char	**generate_map(char	*path_file);
+char	**generate_map(t_game *game, char *path_file);
 
 //tool_event
 int		move(int key, t_game *game);
@@ -95,7 +96,7 @@ void	load_image(t_game *game, t_image *image, char *path);
 void	draw_image(t_game *game, t_image *image, int x, int y);
 
 //tool_destroy
-int		die(t_game *game, char *errmsg, int errnum);
+int		die(t_game *game, char *errmsg, int errnum, char *ptr);
 void	free_map(char **tab);
 int		exit_game(t_game *game);
 

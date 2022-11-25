@@ -98,7 +98,6 @@ int	move_ppl(int key, t_game *game)
 		left(game, &game->player);
 	else if (key == KEY_D || key == KEY_RIGHT)
 		right(game, &game->player);
-	render_map(game, 0, 0);
 	ft_putnbr_fd(game->moves, 0);
 	ft_putchar_fd('\n', 0);
 	return (0);

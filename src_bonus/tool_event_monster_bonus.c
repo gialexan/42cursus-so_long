@@ -84,5 +84,4 @@ void	move_enemy(t_game *game)
 	game->time_move_enemy = 0;
 	update_frame_enemy(game);
 	choose_move(game);
-	render_map(game, 0, 0);
 }
