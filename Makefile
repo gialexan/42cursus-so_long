@@ -6,7 +6,7 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 02:09:45 by gialexan          #+#    #+#              #
-#    Updated: 2022/10/01 00:33:06 by gialexan         ###   ########.fr        #
+#    Updated: 2022/11/25 13:48:12 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_DIR = 			src
 
 LIBFT_DIR = 		libft
 
-MINILIBX_DIR = 		minilibx
+MINILIBX_DIR = 		minilibx_local
 
 SRC_BONUS =			$(addprefix $(SRC_DIR_BONUS)/, $(SRC_BONUS_FILE))
 
@@ -41,7 +41,7 @@ OBJ_BONUS =			$(SRC_BONUS:.c=.o)
 
 LIBFT = 			./libft/libft.a
 
-MINILIBX = 			./minilibx/libmlx.a
+MINILIBX = 			./minilibx_local/libmlx.a
 
 RM = 				rm -f
 

@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:19:16 by gialexan          #+#    #+#             */
-/*   Updated: 2022/10/01 00:31:14 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/11/25 13:50:02 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_BONUS_H
 
 //Includes
-# include "../minilibx/mlx.h"
+# include "../minilibx_local/mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
