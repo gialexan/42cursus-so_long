@@ -6,7 +6,7 @@
 #    By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 02:09:45 by gialexan          #+#    #+#              #
-#    Updated: 2022/11/25 13:48:12 by gialexan         ###   ########.fr        #
+#    Updated: 2022/11/25 14:01:47 by gialexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC_DIR = 			src
 
 LIBFT_DIR = 		libft
 
-MINILIBX_DIR = 		minilibx_local
+MINILIBX_DIR = 		minilibx
 
 SRC_BONUS =			$(addprefix $(SRC_DIR_BONUS)/, $(SRC_BONUS_FILE))
 
@@ -41,7 +41,7 @@ OBJ_BONUS =			$(SRC_BONUS:.c=.o)
 
 LIBFT = 			./libft/libft.a
 
-MINILIBX = 			./minilibx_local/libmlx.a
+MINILIBX = 			./minilibx/libmlx.a
 
 RM = 				rm -f
 
@@ -52,10 +52,10 @@ CFLAGS = 			-Wall -Wextra -Werror -g
 MINILIBX_FLAGS = 	-lX11 -lXext -lmlx
 
 all: $(NAME)
-		./so_long ./map/mandatory.ber
+		./so_long $(MAP)
 
 bonus: $(NAME_BONUS)
-		./so_long_bonus ./map/bonus.ber
+		./so_long_bonus $(MAP_BONUS)
 
 $(NAME):			$(LIBFT) $(MINILIBX) $(OBJ)
 					$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX) $(MINILIBX_FLAGS) -o $(NAME)
@@ -68,9 +68,6 @@ $(LIBFT):
 
 $(MINILIBX):
 					$(MAKE) -C $(MINILIBX_DIR)
-
-run:				$(NAME)
-					./so_long $(MAP)
 
 vm:					$(NAME)
 					valgrind ./so_long $(MAP)
