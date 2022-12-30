@@ -2,7 +2,7 @@
 This is the first graphic project at [42](https://www.42sp.org.br).
 
 ### What is so_long?
-So_long is an individual project in [42](https://www.42sp.org.br) hat requires us to create a very small 2D game.
+So_long is an individual project in [42](https://www.42sp.org.br) that requires us to create a very small 2D game.
 Its purpose is to make you work with textures, sprites, and some other very basic gameplay elements using [MinilibX](https://harm-smits.github.io/42docs/libs/minilibx/introduction.html).
 
 #### Gameplay
