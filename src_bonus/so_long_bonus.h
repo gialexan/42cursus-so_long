@@ -6,7 +6,7 @@
 /*   By: gialexan <gialexan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 19:19:16 by gialexan          #+#    #+#             */
-/*   Updated: 2022/11/25 13:57:36 by gialexan         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:45:56 by gialexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@
 # define KEY_W			0x0077
 
 //animation
-# define SPEED_ANIMATION 		2000
-# define SPEED_ANIMATION_ENEMY 	8000
+# define SPEED_ANIMATION 		3000
+# define SPEED_ANIMATION_ENEMY 	10000
 # define UP_ENEMY				1
 # define DOWN_ENEMY				0
 
