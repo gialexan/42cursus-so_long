@@ -25,7 +25,7 @@ Its purpose is to make you work with textures, sprites, and some other very basi
 **Follow the steps below**
 ```bash
 # Clone the project and access the folder
-git clone https://github.com/gialexan/so_long-42 && cd so_long-42/
+git clone https://github.com/gialexan/42cursus-so_long && cd 42cursus-so_long/
 # Run make for create the game without enemies and animations
 make
 # Run make bonus for create the game with enemies and animations
